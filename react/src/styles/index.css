@@ -1,0 +1,277 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+/* Everything clickable shows the pointer. Tailwind 4's
+   preflight sets buttons to cursor: default, so without this only the shell's icon buttons had it. */
+@layer base {
+  button:not(:disabled),
+  [role='button']:not([aria-disabled='true']),
+  a[href],
+  summary,
+  label[for] {
+    cursor: pointer;
+  }
+}
+
+/* The header's AI button: the brand-subtle fill deepens toward the brand tone on hover, with a brand
+   border, and a little more when pressed; tokens, so it follows both themes. */
+.rep-ai-button {
+  border: 1px solid transparent;
+  background: var(--color-sf-bg-brand-subtle);
+  color: var(--color-sf-fg-brand-primary);
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.rep-ai-button:hover {
+  background: color-mix(in srgb, var(--color-sf-bg-brand-subtle), var(--color-sf-fg-brand-primary) 16%);
+  border-color: color-mix(in srgb, var(--color-sf-fg-brand-primary) 45%, transparent);
+  box-shadow: var(--app-card-shadow);
+}
+.rep-ai-button:active {
+  background: color-mix(in srgb, var(--color-sf-bg-brand-subtle), var(--color-sf-fg-brand-primary) 26%);
+}
+
+/* Base styles using semantic tokens */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--sf-font-sans);
+  background-color: var(--app-shell-bg);
+  color: var(--color-sf-fg-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Syncfusion Card: the Tailwind 3 bundle draws the card (surface,
+   border, title); the app sets layout and spacing only. Scoped to .rep-kpi / .rep-panel so Kanban cards,
+   which are also .e-card, are untouched. */
+.e-card.rep-kpi,
+.e-card.rep-panel {
+  justify-content: flex-start;
+  line-height: normal;
+  border-radius: var(--sf-radius-lg);
+  box-shadow: var(--app-card-shadow);
+}
+.e-card.rep-kpi {
+  min-height: var(--app-kpi-min-height);
+}
+.e-card.rep-kpi .e-card-header {
+  align-items: flex-start;
+  border-bottom: 0;
+  padding: var(--app-kpi-content-inset-block) var(--app-kpi-content-inset-inline) 0;
+}
+.e-card.rep-kpi .e-card-header .e-card-header-caption {
+  padding: 0;
+}
+.e-card.rep-kpi .e-card-header .e-card-header-caption .e-card-header-title {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-sf-fg-secondary);
+}
+.e-card.rep-kpi .e-card-content {
+  padding: 4px var(--app-kpi-content-inset-inline) var(--app-kpi-content-inset-block);
+}
+.e-card.rep-kpi .rep-kpi-value {
+  margin: 0;
+  overflow: visible;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-sf-fg-primary);
+}
+.e-card.rep-kpi .rep-kpi-detail {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--color-sf-fg-secondary);
+}
+.e-card.rep-panel {
+  overflow: hidden;
+}
+/* No hover tint or pressed border: a panel holds a chart, a board or filters, and a display-only KPI
+   card has no pointer affordance. The theme tints
+   .e-card:hover and gives .e-card:active a primary border, which lit the whole filter panel while a
+   DropDownList inside it was pressed. */
+.e-card.rep-kpi:hover,
+.e-card.rep-kpi:focus,
+.e-card.rep-kpi:active,
+.e-card.rep-panel:hover,
+.e-card.rep-panel:focus-within,
+.e-card.rep-panel:active {
+  background: var(--color-sf-content-bg-color);
+  border-color: var(--color-sf-border-light);
+}
+.e-card.rep-panel .e-card-header {
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 16px 20px;
+}
+.e-card.rep-panel .e-card-header .e-card-header-caption {
+  padding: 0;
+}
+.e-card.rep-panel .e-card-header .e-card-header-caption .e-card-header-title {
+  margin: 0;
+  color: var(--color-sf-fg-primary);
+}
+.e-card.rep-panel .e-card-header .e-card-header-caption .e-card-sub-title {
+  white-space: normal;
+  font-size: 12px;
+  color: var(--color-sf-fg-secondary);
+}
+.rep-panel-icon {
+  display: inline-flex;
+  color: var(--color-sf-fg-brand-primary);
+}
+.rep-panel-aside {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--color-sf-fg-secondary);
+  text-align: right;
+}
+.e-card.rep-panel > .e-card-content {
+  color: inherit;
+  padding: 16px;
+}
+/* A grid that sits close to the card edge. */
+.e-card.rep-panel > .e-card-content.rep-panel-tight {
+  padding: 8px;
+}
+/* The selected property: the photo fills the Card's image area; the code sits on it as its title. */
+.e-card.rep-property-card .e-card-image {
+  background-size: cover;
+  background-position: center;
+}
+/* The theme draws the image title in dark text on a grey band; white on a dark scrim reads on any photo. */
+.e-card.rep-property-card .e-card-image .e-card-title {
+  color: #ffffff;
+  font-weight: 600;
+  background-color: rgba(15, 23, 42, 0.72);
+}
+/* A board or list that brings its own padding. */
+.e-card.rep-panel > .e-card-content.rep-panel-flush {
+  padding: 0;
+}
+
+.rep-kpi-icon-badge {
+  flex: none;
+  width: var(--app-kpi-icon-size);
+  height: var(--app-kpi-icon-size);
+  border-radius: var(--sf-radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Focus rings for the keyboard, not the mouse: a Grid cell
+   keeps its ring when arrow keys or Tab bring focus there, not after a click on a row. */
+.e-grid .e-rowcell.e-focused:not(:focus-visible),
+.e-grid .e-headercell.e-focused:not(:focus-visible) {
+  box-shadow: none !important;
+}
+
+/* Kanban: a clicked card keeps the plain card look (its selection does nothing here); a card, the card list
+   or the board reached by the keyboard shows a brand-blue ring. Syncfusion 35.1.37 draws no ring there, so
+   keyboard focus was invisible. */
+.e-kanban .e-card.e-selection:not(:focus-visible):not(:hover) {
+  border-color: var(--color-sf-border-light) !important;
+  box-shadow: none !important;
+}
+.e-kanban:focus-visible,
+.e-kanban .e-card-wrapper:focus-visible,
+.e-kanban .e-card:focus-visible {
+  outline: 2px solid var(--color-sf-primary) !important;
+  outline-offset: -2px;
+}
+
+/* Keyboard focus is always visible. The theme's unlayered
+   rules beat the shell's layered focus rule on the sidebar links, and a chart, a Grid header cell or a
+   template cell took keyboard focus with nothing drawn. */
+.app-shell-link:focus-visible {
+  outline: 2px solid var(--app-focus-ring) !important;
+  outline-offset: 2px;
+}
+.e-chart:focus-visible,
+.e-accumulationchart:focus-visible,
+.e-maps:focus-visible,
+.e-schedule:focus-visible {
+  outline: 2px solid var(--color-sf-primary) !important;
+  outline-offset: 2px;
+}
+.e-grid .e-headercell:focus-visible,
+.e-grid .e-rowcell:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--color-sf-primary) !important;
+}
+
+/* One indicator per area: while the "Loading document…" overlay covers the viewer panel, the PDF Viewer's own spinner (shown when
+   its engine starts) is hidden; it showed through the overlay as a second ring. After the document has
+   loaded the viewer's spinner works as usual (pages still rendering). */
+.rep-doc-loading .e-pdfviewer .e-spinner-pane { visibility: hidden !important; }
+
+/* Editor validation messages sit under their field (src/components/editors/VisitFields.tsx). */
+.rep-field-error {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--color-sf-fg-danger-primary);
+}
+
+/* Syncfusion Dashboard Layout resets */
+.e-dashboardlayout {
+  background: transparent !important;
+  border: none !important;
+}
+
+.e-dashboardlayout .e-panel {
+  background: var(--app-card-bg) !important;
+  border: 1px solid var(--app-card-border) !important;
+  border-radius: var(--sf-radius-lg) !important;
+  box-shadow: var(--app-card-shadow) !important;
+  overflow: hidden;
+}
+
+.e-dashboardlayout .e-panel .e-panel-header {
+  border-bottom: 1px solid var(--app-card-border);
+  padding: var(--sf-space-3) var(--sf-space-4);
+  background: var(--color-sf-bg-surface-muted);
+  font-weight: 600;
+  color: var(--color-sf-fg-primary);
+}
+
+.e-dashboardlayout .e-panel .e-panel-content {
+  padding: var(--sf-space-4);
+  background: var(--app-card-bg);
+}
+
+/* Sidebar styling by ID */
+#rep-app-sidebar {
+  background: var(--color-sf-bg-surface) !important;
+  border-right: 1px solid var(--app-card-border) !important;
+  color: var(--color-sf-fg-primary) !important;
+}
+
+#rep-app-sidebar.e-sidebar {
+  box-shadow: var(--app-card-shadow);
+}
+
+/* Sample AI Advisor answers (AI AssistView). Answers are Markdown converted to HTML: keep headings at
+   reading size, and restore the list markers and spacing Tailwind's reset removes. */
+#sample-ai-advisor .e-response :is(h1, h2, h3, h4) {
+  font-size: inherit;
+  font-weight: 600;
+  margin: 0 0 var(--sf-space-2);
+}
+
+#sample-ai-advisor .e-response p {
+  margin: 0 0 var(--sf-space-2);
+}
+
+#sample-ai-advisor .e-response :is(ul, ol) {
+  margin: 0 0 var(--sf-space-2);
+  padding-left: var(--sf-space-5);
+}
+
+#sample-ai-advisor .e-response ul { list-style: disc; }
+#sample-ai-advisor .e-response ol { list-style: decimal; }

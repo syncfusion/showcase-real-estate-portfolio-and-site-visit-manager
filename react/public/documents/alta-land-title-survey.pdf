@@ -1,0 +1,65 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Length 1486 >>
+stream
+0.09 0.36 0.83 rg 0 752 612 40 re f
+1 1 1 rg
+BT /F2 11 Tf 54 766 Td (SAMPLE DOCUMENT  |  Real Estate Portfolio showcase) Tj ET
+0.07 0.09 0.15 rg
+BT /F2 20 Tf 54 712 Td (ALTA/NSPS Land Title Survey) Tj ET
+0.29 0.33 0.4 rg
+BT /F1 11 Tf 54 690 Td (Surveyor's certificate and notes \(survey drawing issued separately as DWG\)) Tj ET
+0.85 0.87 0.9 RG 54 676 m 558 676 l S
+0.07 0.09 0.15 rg
+BT /F2 12 Tf 54 646 Td (Certificate) Tj ET
+0.2 0.24 0.31 rg
+BT /F1 10 Tf 54 629 Td (This map or plat and the survey on which it is based were made in accordance with the) Tj ET
+BT /F1 10 Tf 54 612 Td (2021 Minimum Standard Detail Requirements for ALTA/NSPS Land Title Surveys,) Tj ET
+BT /F1 10 Tf 54 595 Td (including Items 1-4, 6\(a\), 7\(a\), 8, 9, 11\(a\), 13 and 16 of Table A.) Tj ET
+0.07 0.09 0.15 rg
+BT /F2 12 Tf 54 565 Td (Survey notes) Tj ET
+0.2 0.24 0.31 rg
+BT /F1 10 Tf 54 548 Td (Flood zone: Zone X \(area of minimal flood hazard\).) Tj ET
+BT /F1 10 Tf 54 531 Td (Easements listed in the title commitment are plotted where locatable.) Tj ET
+BT /F1 10 Tf 54 514 Td (No evidence of recent earth moving, building construction or additions observed.) Tj ET
+0.07 0.09 0.15 rg
+BT /F2 12 Tf 54 484 Td (Title commitment) Tj ET
+0.2 0.24 0.31 rg
+BT /F1 10 Tf 54 467 Td (Schedule B-II exceptions reviewed; no encroachments noted.) Tj ET
+0.45 0.49 0.55 rg
+BT /F1 9 Tf 54 60 Td (Illustrative sample for a software demonstration. Not a real report. The vault shows the record's file and property.) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Title (ALTA/NSPS Land Title Survey - sample) /Producer (make-sample-documents.mjs) >>
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000251 00000 n 
+0000000348 00000 n 
+0000000450 00000 n 
+0000001988 00000 n 
+trailer
+<< /Size 8 /Root 1 0 R /Info 7 0 R >>
+startxref
+2093
+%%EOF
