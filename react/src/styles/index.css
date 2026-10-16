@@ -205,6 +205,16 @@ body {
   box-shadow: inset 0 0 0 2px var(--color-sf-primary) !important;
 }
 
+/* Scheduler text that reads on its surface: adjacent-month dates take the secondary text token (the theme's
+   #9CA3AF was 2.4:1 on white, 3.2:1 on the dark surface); in dark, the accent drawn as text (the active view,
+   today's column header) is the lighter #60A5FA, since #2563EB was 3.0:1 there. Accent fills keep #2563EB. */
+.e-schedule .e-month-view .e-other-month .e-date-header { color: var(--color-sf-fg-secondary); }
+:root[data-theme="dark"] .e-schedule .e-toolbar .e-active-view .e-tbar-btn-text,
+:root[data-theme="dark"] .e-schedule .e-toolbar .e-active-view .e-icons,
+:root[data-theme="dark"] .e-schedule .e-header-cells.e-current-day { color: #60a5fa; }
+/* Today's badge in dark: the theme draws #111827 on the accent (3.4:1); white on #2563EB is 5.2:1. */
+:root[data-theme="dark"] .e-schedule .e-month-view .e-current-date .e-date-header { color: #ffffff; }
+
 /* One indicator per area: while the "Loading document…" overlay covers the viewer panel, the PDF Viewer's own spinner (shown when
    its engine starts) is hidden; it showed through the overlay as a second ring. After the document has
    loaded the viewer's spinner works as usual (pages still rendering). */

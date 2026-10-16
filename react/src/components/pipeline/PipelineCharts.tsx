@@ -58,8 +58,11 @@ export const DealValueChart: React.FC<{ deals: PipelineDeal[] }> = ({ deals }) =
         primaryXAxis={{ valueType: 'Category', majorGridLines: { width: 0 }, labelStyle: font, labelIntersectAction: 'Rotate45' }}
         primaryYAxis={{ title: 'Valuation ($M)', titleStyle: font, labelFormat: '${value}M', lineStyle: { width: 0 }, labelStyle: font }}
         chartArea={{ border: { width: 0 } }}
-        legendSettings={{ visible: true, position: 'Bottom', textStyle: font }}
-        // The header names the series (Total valuation / Probability-weighted); the body the stage and value.
+        // Padding 16 (default 8) gives the legend box room: sized to Syncfusion's own text measure it shaved 2-3 px
+        // off "Probability weighted" at 1023 and 390 px. A fixed width: '100%' fixed that but laid the items out from
+        // the left. The label has a space so it can wrap where the width runs out.
+        legendSettings={{ visible: true, position: 'Bottom', padding: 16, textStyle: font, textWrap: 'Wrap' }}
+        // The header names the series (Total valuation / Probability weighted); the body the stage and value.
         tooltip={{ enable: true, format: '${point.x}: <b>${point.tooltip}</b>' }}
         background="transparent"
       >
@@ -67,7 +70,7 @@ export const DealValueChart: React.FC<{ deals: PipelineDeal[] }> = ({ deals }) =
         <SeriesCollectionDirective>
           <SeriesDirective dataSource={data} xName="stage" yName="total" name="Total valuation" type="Column"
             fill={tones.series[0]} tooltipMappingName="totalText" columnSpacing={0.15} cornerRadius={{ topLeft: 3, topRight: 3 }} />
-          <SeriesDirective dataSource={data} xName="stage" yName="weighted" name="Probability-weighted" type="Column"
+          <SeriesDirective dataSource={data} xName="stage" yName="weighted" name="Probability weighted" type="Column"
             fill={tones.series[1]} tooltipMappingName="weightedText" columnSpacing={0.15} cornerRadius={{ topLeft: 3, topRight: 3 }} />
         </SeriesCollectionDirective>
       </ChartComponent>
